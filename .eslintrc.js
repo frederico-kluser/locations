@@ -18,7 +18,7 @@ module.exports = {
     'react',
   ],
   rules: {
-    complexity: ['error', 5],
+    complexity: ['error', 6],
     'no-plusplus': 'off',
   },
 };

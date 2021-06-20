@@ -6,13 +6,13 @@ const data = [
     country: 'Brazil',
     imageUrl: './cover.jpeg',
     mapPosition: 'translate(16vw, -16vw)',
-    trips: 18,
+    trips: 5,
   },
   {
     country: 'Africa',
     imageUrl: './cover.jpeg',
     mapPosition: 'translate(16vw, -16vw)',
-    trips: 18,
+    trips: 10,
   },
   {
     country: 'England',
@@ -22,25 +22,38 @@ const data = [
   },
 ];
 
-function handleGesure() {
-  const swiped = 'swiped: ';
+const moveCards = (pos) => {
+  const carrousel = document.getElementById('carrousel');
+  carrousel.setAttribute('class', 'carrousel-container moviment');
+  carrousel.style.transform = `translateX(-${pos * (329 + 12)}px)`;
+  Object.values(document.getElementsByClassName('item')).forEach((item, index) => {
+    item.setAttribute('class', index === pos ? 'item selected' : 'item');
+  });
+  setTimeout(() => {
+    carrousel.setAttribute('class', 'carrousel-container');
+  }, 250);
+};
 
-  if (touchendX < touchstartX && position > 0) {
-    console.log(`${swiped}left!`);
+const handleGesure = () => {
+  let active = false;
+
+  if (touchendX > touchstartX && position > 0) {
     position--;
+    active = true;
   }
-  if (touchendX > touchstartX && position <= data.length) {
-    console.log(`${swiped}right!`);
+  if (touchendX < touchstartX && position <= data.length) {
     position++;
+    active = true;
   }
-}
 
-setTimeout(() => {
-  document.getElementById('pointer').setAttribute('class', 'active');
-}, 250);
+  if (active) {
+    moveCards(position);
+  }
+};
 
 const renderCards = () => {
   let HTML = '';
+  const carrousel = document.getElementById('carrousel');
 
   data.forEach(({ country, imageUrl, trips }, index) => {
     HTML += `
@@ -52,10 +65,14 @@ const renderCards = () => {
     `;
   });
 
-  document.getElementById('carrousel').innerHTML = HTML;
-  document.getElementById('carrousel').setAttribute('class', 'carrousel-container');
-  document.getElementById('carrousel').style.width = `calc(${data.length} * (329px + 12px))`;
-  document.getElementById('carrousel').style.transform = `translateX(-${position * (329 + 12)}px)`;
+  carrousel.innerHTML = HTML;
+  carrousel.setAttribute('class', 'carrousel-container');
+  carrousel.style.width = `calc(${data.length} * (329px + 12px))`;
+  carrousel.style.transform = `translateX(-${position * (329 + 12)}px)`;
+  document.getElementById('world-map').style.transform = `scale(6) ${data[position].mapPosition}`;
+  setTimeout(() => {
+    document.getElementById('pointer').setAttribute('class', 'active');
+  }, 1000);
 };
 
 const prepare = () => {
@@ -93,10 +110,6 @@ const prepare = () => {
     },
     false,
   );
-
-  setTimeout(() => {
-    document.getElementById('pointer').setAttribute('class', 'active');
-  }, 250);
 };
 
 window.prepare = prepare;
