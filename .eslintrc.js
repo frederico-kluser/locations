@@ -19,5 +19,6 @@ module.exports = {
   ],
   rules: {
     complexity: ['error', 5],
+    'no-plusplus': 'off',
   },
 };

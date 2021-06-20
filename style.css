@@ -68,8 +68,7 @@ main {
 	height: 472px;
 	padding-left: 23px;
 	position: absolute;
-	width: calc(3 * (329px + 12px));
-	margin-left: -341px;
+  transition: 1s all;
 }
 
 .carrousel-container > * {
