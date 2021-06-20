@@ -92,6 +92,7 @@ main {
 	position: absolute;
 	margin: 0px;
 	transform: translateX(0px);
+  font-family: sans-serif;
 }
 
 .item h1 {
@@ -99,20 +100,36 @@ main {
 	font-size: 39px;
 	left: 25px;
 	text-transform: uppercase;
+	z-index: 2;
 }
 
 .carrousel-container.moviment .item h1 {
-	transform: translateX(50px);
+	transform: translateX(100px);
+}
+.carrousel-container.moviment.left .item h1 {
+	transform: translateX(-100px);
 }
 
 .item p {
 	bottom: 23px;
 	font-size: 18px;
 	left: 28px;
+	z-index: 2;
 }
 
 .carrousel-container.moviment .item p {
-	transform: translateX(30px);
+	transform: translateX(50px);
+}
+.carrousel-container.moviment.left .item p {
+	transform: translateX(-50px);
+}
+
+.item:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #00000026;
+  position: absolute;
 }
 
 .item img {
@@ -127,10 +144,20 @@ main {
 	transform: scale(1);
 }
 
+#world-map, #pointer {
+  pointer-events: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none;
+}
+
 #world-map {
 	margin-top: var(--marginTop);
 	width: 100vw;
-  transition: 0.5s all;
+  transition: 0.5s all linear;
 }
 
 #pointer {
@@ -141,12 +168,12 @@ main {
 	position: absolute;
 	top: calc(var(--marginTop) + (65.957333333333333vw / 2) - (var(--pointerSize) / 2));
 	transform: scale(0);
-	transition: 0.25s all linear;
 	width: var(--pointerSize);
 }
 
 #pointer.active {
 	transform: scale(1);
+	transition: 0.25s all linear;
 }
 
 @keyframes firstPointer {
