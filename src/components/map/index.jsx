@@ -7,7 +7,7 @@ import worldMap from '../../assets/world.svg';
 
 const Map = ({ position }) => (
   <>
-    <Img src={worldMap} position={position} />
+    <Img src={worldMap} position={position} alt="world map" />
     <Pointer active>
       <PointerEffect active />
       <PointerEffect active last />

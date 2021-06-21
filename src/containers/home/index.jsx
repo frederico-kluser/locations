@@ -1,20 +1,40 @@
-import React from 'react';
+/* eslint-disable global-require */
+import React, { useState } from 'react';
+
 import Map from '../../components/map';
+import Carrousel from '../../components/carrousel';
 import Main from './styled';
 
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+const Home = () => {
+  const data = [
+    {
+      country: 'Brazil',
+      imageUrl: require('../../assets/countries/brazil.jpeg'),
+      mapPosition: 'translate(16vw, -16vw)',
+      trips: 5,
+    },
+    {
+      country: 'South Africa',
+      imageUrl: require('../../assets/countries/africa.jpeg'),
+      mapPosition: 'translate(-3.6vw, -21.7vw)',
+      trips: 10,
+    },
+    {
+      country: 'England',
+      imageUrl: require('../../assets/countries/england.jpeg'),
+      mapPosition: 'translate(3.4vw, 4.2vw)',
+      trips: 18,
+    },
+  ];
 
-  render() {
-    return (
-      <Main>
-        <Map position="scale(6) translate(16vw, -16vw)" />
-      </Main>
-    );
-  }
-}
+  const [position] = useState(0);
+
+  return (
+    <Main>
+      <Map position={`scale(6) ${data[position].mapPosition}`} />
+      <Carrousel data={data} position={position} />
+    </Main>
+  );
+};
 
 export default Home;
