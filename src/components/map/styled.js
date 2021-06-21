@@ -12,7 +12,7 @@ user-select: none;
 
 export const Img = styled.img`
   margin-top: var(--marginTop);
-  transform: ${(props) => props.position};
+  transform: ${(props) => props.styleTransform};
   transition: 0.5s all linear;
   user-select: none;
   width: 100vw;

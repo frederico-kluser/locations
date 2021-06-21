@@ -56,6 +56,8 @@ export const Title = styled.h1`
   font-size: 39px;
   left: 25px;
   text-transform: uppercase;
+  ${(props) => (props.side === 'left' ? 'transform: translateX(-100px)' : '')};
+  ${(props) => (props.side === 'right' ? 'transform: translateX(100px)' : '')};
   z-index: 2;
 `;
 
@@ -64,5 +66,7 @@ export const Paragraph = styled.p`
   bottom: 23px;
   font-size: 18px;
   left: 28px;
+  ${(props) => (props.side === 'left' ? 'transform: translateX(-50px)' : '')};
+  ${(props) => (props.side === 'right' ? 'transform: translateX(50px)' : '')};
   z-index: 2;
 `;

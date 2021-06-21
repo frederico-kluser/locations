@@ -27,12 +27,26 @@ const Home = () => {
     },
   ];
 
-  const [position] = useState(0);
+  const [position, setPosition] = useState(0);
+  const [scale, setScale] = useState(6);
+  const [active, setActive] = useState(true);
+
+  const swipeCarrousel = (newPosition) => {
+    setPosition(newPosition);
+    setScale(3);
+    setActive(false);
+    setTimeout(() => {
+      setScale(6);
+      setTimeout(() => {
+        setActive(true);
+      }, 750);
+    }, 250);
+  };
 
   return (
     <Main>
-      <Map position={`scale(6) ${data[position].mapPosition}`} />
-      <Carrousel data={data} position={position} />
+      <Map active={active} styleTransform={`scale(${scale}) ${data[position].mapPosition}`} />
+      <Carrousel data={data} position={position} swipeCarrousel={swipeCarrousel} />
     </Main>
   );
 };

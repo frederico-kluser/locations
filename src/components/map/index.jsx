@@ -5,18 +5,19 @@ import './style.css';
 import { Img, Pointer, PointerEffect } from './styled';
 import worldMap from '../../assets/world.svg';
 
-const Map = ({ position }) => (
+const Map = ({ styleTransform, active }) => (
   <>
-    <Img src={worldMap} position={position} alt="world map" />
-    <Pointer active>
-      <PointerEffect active />
-      <PointerEffect active last />
+    <Img src={worldMap} styleTransform={styleTransform} alt="world map" />
+    <Pointer active={active}>
+      <PointerEffect active={active} />
+      <PointerEffect active={active} last />
     </Pointer>
   </>
 );
 
 Map.propTypes = {
-  position: PropTypes.string.isRequired,
+  styleTransform: PropTypes.string.isRequired,
+  active: PropTypes.bool.isRequired,
 };
 
 export default Map;
