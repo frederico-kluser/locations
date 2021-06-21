@@ -13,6 +13,7 @@ const dependencies = `
 export const Scroller = styled.section`
   bottom: 4px;
   height: 472px;
+  max-height: 65vh;
   padding-left: 23px;
   position: absolute;
   transition: 1s all;
@@ -28,6 +29,8 @@ export const Item = styled.div`
   float: left;
   height: 433px;
   margin-right: 12px;
+  max-height: 60vh;
+  max-width: calc(100vw - 46px);
   overflow: hidden;
   pointer-events: none;
   position: relative;
@@ -44,6 +47,8 @@ export const Item = styled.div`
 export const Place = styled.img`
   ${dependencies}
   left: 0px;
+  max-height: 60vh;
+  max-width: calc(100vw - 46px);
   min-height: 433px;
   min-width: 329px;
   top: 0px;
