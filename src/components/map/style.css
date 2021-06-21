@@ -1,0 +1,32 @@
+@keyframes firstPointer {
+	0% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(5);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(5);
+	}
+}
+
+@keyframes lastPointer {
+	0% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	10% {
+		transform: scale(1);
+	}
+	70% {
+		opacity: 1;
+		transform: scale(5);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(5);
+	}
+}

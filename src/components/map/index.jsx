@@ -1,10 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Img from './styled';
+import './style.css';
+import { Img, Pointer, PointerEffect } from './styled';
 import worldMap from '../../assets/world.svg';
 
-const Map = ({ position }) => <Img src={worldMap} position={position} />;
+const Map = ({ position }) => (
+  <>
+    <Img src={worldMap} position={position} />
+    <Pointer active>
+      <PointerEffect active />
+      <PointerEffect active last />
+    </Pointer>
+  </>
+);
 
 Map.propTypes = {
   position: PropTypes.string.isRequired,
