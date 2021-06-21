@@ -13,6 +13,6 @@ code {
 }
 
 :root {
-	--marginTop: 7vh;
+	--marginTop: calc(20vh - 30vw);
 	--pointerSize: 12px;
 }
