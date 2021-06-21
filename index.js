@@ -5,7 +5,7 @@ const data = [
   {
     country: 'Brazil',
     imageUrl: './brazil.jpeg',
-    mapPosition: 'translate(16vw, -16vw)',
+    mapPosition: 'translate(16vw, -16.7vw)',
     trips: 5,
   },
   {

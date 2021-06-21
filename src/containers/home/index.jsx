@@ -10,7 +10,7 @@ const Home = () => {
     {
       country: 'Brazil',
       imageUrl: require('../../assets/countries/brazil.jpeg'),
-      mapPosition: 'translate(16vw, -16vw)',
+      mapPosition: 'translate(16vw, -16.7vw)',
       trips: 5,
     },
     {

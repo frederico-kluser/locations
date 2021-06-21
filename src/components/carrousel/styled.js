@@ -29,6 +29,7 @@ export const Item = styled.div`
   height: 433px;
   margin-right: 12px;
   overflow: hidden;
+  pointer-events: none;
   position: relative;
   width: 329px;
   &:after {
