@@ -1,12 +1,13 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Home from './containers/home';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    Hello World
+    <Home />
   </React.StrictMode>,
   document.getElementById('root'),
 );
