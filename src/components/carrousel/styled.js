@@ -11,6 +11,8 @@ const dependencies = `
   font-family: sans-serif;
 `;
 
+const widthSize = document.body.offsetWidth - 46;
+
 export const Scroller = styled.section`
   bottom: 4px;
   height: 472px;
@@ -18,9 +20,10 @@ export const Scroller = styled.section`
   padding-left: 23px;
   position: absolute;
   transition: 1s all;
-  width: ${(props) => (props.width ? `calc(${props.width} * (329px + 12px) + 100vw)` : 'auto')};
+  width: ${(props) =>
+    props.width ? `calc(${props.width} * (${widthSize}px + 12px) + 100vw)` : 'auto'};
   transform: ${(props) =>
-    props.position ? `translateX(-${props.position * (329 + 12)}px)` : 'translateX(0px)'};
+    props.position ? `translateX(-${props.position * (widthSize + 12)}px)` : 'translateX(0px)'};
 `;
 
 export const Item = styled.div`
@@ -35,7 +38,7 @@ export const Item = styled.div`
   overflow: hidden;
   pointer-events: none;
   position: relative;
-  width: 329px;
+  width: ${widthSize}px;
   &:after {
     background: #00000026;
     content: '';
@@ -51,7 +54,7 @@ export const Place = styled.img`
   max-height: 60vh;
   max-width: calc(100vw - 46px);
   min-height: 433px;
-  min-width: 329px;
+  min-width: ${widthSize}px;
   top: 0px;
   transform: ${(props) => (props.selected ? 'scale(1)' : 'scale(1.2)')};
 `;
