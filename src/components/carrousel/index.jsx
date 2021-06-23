@@ -14,17 +14,22 @@ const Carrousel = () => {
   let touchendX = 0;
 
   const [side, setSide] = useState('');
+  const [swipe, setSwipe] = useState(true);
 
   const swipeCarrousel = (newPosition) => {
-    replacePositionAction(newPosition);
-    replaceScaleAction(3);
-    replaceActiveAction(false);
-    setTimeout(() => {
-      replaceScaleAction(6);
+    if (swipe) {
+      setSwipe(false);
+      replacePositionAction(newPosition);
+      replaceScaleAction(3);
+      replaceActiveAction(false);
       setTimeout(() => {
-        replaceActiveAction(true);
-      }, 750);
-    }, 250);
+        replaceScaleAction(6);
+        setTimeout(() => {
+          replaceActiveAction(true);
+          setSwipe(true);
+        }, 750);
+      }, 250);
+    }
   };
 
   const handleGesure = () => {
