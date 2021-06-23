@@ -1,16 +1,31 @@
 /* eslint-disable no-param-reassign */
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
 import {
   Item, Paragraph, Place, Scroller, Title,
 } from './styled';
+import { replaceActiveAction, replacePositionAction, replaceScaleAction } from '../../store/actions';
+import store from '../../store';
 
-const Carrousel = ({ data, position, swipeCarrousel }) => {
+const Carrousel = () => {
+  const { data, position } = store.getState();
+
   let touchstartX = 0;
   let touchendX = 0;
 
   const [side, setSide] = useState('');
+
+  const swipeCarrousel = (newPosition) => {
+    replacePositionAction(newPosition);
+    replaceScaleAction(3);
+    replaceActiveAction(false);
+    setTimeout(() => {
+      replaceScaleAction(6);
+      setTimeout(() => {
+        replaceActiveAction(true);
+      }, 750);
+    }, 250);
+  };
 
   const handleGesure = () => {
     let active = false;
@@ -83,12 +98,6 @@ const Carrousel = ({ data, position, swipeCarrousel }) => {
       { renderItems() }
     </Scroller>
   );
-};
-
-Carrousel.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  position: PropTypes.number.isRequired,
-  swipeCarrousel: PropTypes.func.isRequired,
 };
 
 export default Carrousel;
