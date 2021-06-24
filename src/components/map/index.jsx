@@ -3,7 +3,7 @@ import React from 'react';
 import './style.css';
 import { Img, Pointer, PointerEffect } from './styled';
 import worldMap from '../../assets/world.svg';
-import store from '../../store';
+import store from '../../redux/store';
 
 const Map = () => {
   const {

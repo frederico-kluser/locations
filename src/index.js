@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Home from './pages/home';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import store from './store';
+import store from './redux/store';
 
 const render = () => {
   ReactDOM.render(

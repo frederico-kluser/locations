@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import {
   Item, Paragraph, Place, Scroller, Title,
 } from './styled';
-import { replaceActiveAction, replacePositionAction, replaceScaleAction } from '../../store/actions';
-import store from '../../store';
+import { replaceActiveAction, replacePositionAction, replaceScaleAction } from '../../redux/actions';
+import store from '../../redux/store';
 
 const Carrousel = () => {
   const { data, position } = store.getState();
