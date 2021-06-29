@@ -1,14 +1,16 @@
+/* eslint-disable react-redux/useSelector-prefer-selectors */
 /* eslint-disable no-param-reassign */
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   Item, Paragraph, Place, Scroller, Title,
 } from './styled';
-import { replaceActiveAction, replacePositionAction, replaceScaleAction } from '../../store/actions';
-import store from '../../store';
+import { replaceActiveAction, replacePositionAction, replaceScaleAction } from '../../app/store';
 
 const Carrousel = () => {
-  const { data, position } = store.getState();
+  const { data, position } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   let touchstartX = 0;
   let touchendX = 0;
@@ -19,13 +21,13 @@ const Carrousel = () => {
   const swipeCarrousel = (newPosition) => {
     if (swipe) {
       setSwipe(false);
-      replacePositionAction(newPosition);
-      replaceScaleAction(3);
-      replaceActiveAction(false);
+      replacePositionAction(dispatch, newPosition);
+      replaceScaleAction(dispatch, 3);
+      replaceActiveAction(dispatch, false);
       setTimeout(() => {
-        replaceScaleAction(6);
+        replaceScaleAction(dispatch, 6);
         setTimeout(() => {
-          replaceActiveAction(true);
+          replaceActiveAction(dispatch, true);
           setSwipe(true);
         }, 750);
       }, 250);
