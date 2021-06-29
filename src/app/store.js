@@ -28,7 +28,7 @@ const initialState = {
   scale: 6,
 };
 
-const reducer = (state = initialState, action) => {
+const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'active':
       return {
@@ -50,8 +50,20 @@ const reducer = (state = initialState, action) => {
   }
 };
 
+export const replaceScaleAction = (dispatch, scale) => {
+  dispatch({ type: 'scale', payload: scale });
+};
+
+export const replacePositionAction = (dispatch, position) => {
+  dispatch({ type: 'position', payload: position });
+};
+
+export const replaceActiveAction = (dispatch, active) => {
+  dispatch({ type: 'active', payload: active });
+};
+
 const store = createStore(
-  reducer,
+  rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 export default store;
